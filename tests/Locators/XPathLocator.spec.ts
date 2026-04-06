@@ -59,3 +59,22 @@ test("XPath demo in playwright", async ({ page }) => {
   const regLink: Locator = page.locator("//a[text()='Register']");
   expect(regLink).toBeVisible();
 });
+
+// Using playwright specific locators
+
+test.only("Handle Dynamic Element using PW Locators", async ({ page }) => {
+  await page.goto("https://testautomationpractice.blogspot.com/");
+
+  // Loop to click the button 5 times
+
+  for (let i = 0; i <= 5; i++) {
+    // Locate button by role and dynamic name
+    const button: Locator = page.getByRole("button", { name: /START|STOP/ });
+
+    // click the button
+    await button.click();
+
+    // wait for 2sec
+    await page.waitForTimeout(2000);
+  }
+});
