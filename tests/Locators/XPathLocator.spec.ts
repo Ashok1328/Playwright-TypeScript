@@ -62,7 +62,7 @@ test("XPath demo in playwright", async ({ page }) => {
 
 // Using playwright specific locators
 
-test.only("Handle Dynamic Element using PW Locators", async ({ page }) => {
+test("Handle Dynamic Element using PW Locators", async ({ page }) => {
   await page.goto("https://testautomationpractice.blogspot.com/");
 
   // Loop to click the button 5 times
