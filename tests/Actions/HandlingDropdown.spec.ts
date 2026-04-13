@@ -93,7 +93,7 @@ test("Verify dropdown is sorted", async ({ page }) => {
 
 /* -----------------------------------------------------------------------  */
 
-test.only("Verify dropdown contains duplicate", async ({ page }) => {
+test("Verify dropdown contains duplicate", async ({ page }) => {
   await page.goto("https://testautomationpractice.blogspot.com/");
 
   //const dropdownOptions: Locator = page.locator("#colors>option"); // having duplicate option
