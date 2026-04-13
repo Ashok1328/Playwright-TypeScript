@@ -38,7 +38,7 @@ test("Radio Button Action", async ({ page }) => {
   await page.waitForTimeout(3000);
 });
 
-test.only("CheckBox Actions", async ({ page }) => {
+test("CheckBox Actions", async ({ page }) => {
   await page.goto("https://testautomationpractice.blogspot.com/");
 
   // 1. Select specific checkbox using getByLabel and assert --------------------------
