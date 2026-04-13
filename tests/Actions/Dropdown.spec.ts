@@ -112,7 +112,7 @@ test("Identify and print the highest priced product", async ({ page }) => {
 
 /* --------------------------------------------------------------------------------- */
 
-test.only("Verify highest price is greater than lowest price", async ({
+test("Verify highest price is greater than lowest price", async ({
   page,
 }) => {
   await page.goto("https://bstackdemo.com/");
