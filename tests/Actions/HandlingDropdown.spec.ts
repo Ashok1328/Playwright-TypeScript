@@ -21,8 +21,7 @@ test("Select Single dropdown", async ({ page }) => {
   // 3. -------- check an option present in the dropdown
 
   const optionText: string[] = (await dropdownOptions.allTextContents()).map(
-    (text) => text.trim(),
-  );
+    (text) => text.trim());
   console.log(optionText);
 
   await page.waitForTimeout(3000);
