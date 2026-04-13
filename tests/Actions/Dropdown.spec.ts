@@ -112,9 +112,7 @@ test("Identify and print the highest priced product", async ({ page }) => {
 
 /* --------------------------------------------------------------------------------- */
 
-test("Verify highest price is greater than lowest price", async ({
-  page,
-}) => {
+test("Verify highest price is greater than lowest price", async ({ page }) => {
   await page.goto("https://bstackdemo.com/");
 
   // ------------ sort ascending ------------
@@ -133,4 +131,33 @@ test("Verify highest price is greater than lowest price", async ({
   console.log("Highest: ", highestPrice);
 
   expect(highestPrice).toBeGreaterThan(lowestPrice);
+});
+
+/* -------------------------------------------------------------------------------  */
+
+test("Find lowest and highest product without UI sorting", async ({ page }) => {
+  await page.goto("https://bstackdemo.com/");
+
+  const productNames = await page
+    .locator(".shelf-item__title")
+    .allTextContents();
+
+  const priceText = await page.locator(".val > b").allTextContents();
+
+  const prices = priceText.map((price) =>
+    Number(price.replace("$", "").trim()),
+  );
+
+  const lowestPrice = Math.min(...prices);
+  const highestPrice = Math.max(...prices);
+
+  const lowestIndex = prices.indexOf(lowestPrice);
+  const highestIndex = prices.indexOf(highestPrice);
+
+  console.log(
+    `Lowest Product: ${productNames[lowestIndex].trim()} --> $${lowestPrice}`,
+  );
+  console.log(
+    `Highest Product: ${productNames[highestIndex].trim()} --> $${highestPrice}`,
+  );
 });
