@@ -135,7 +135,7 @@ test("Verify highest price is greater than lowest price", async ({ page }) => {
 
 /* -------------------------------------------------------------------------------  */
 
-test("Find lowest and highest product without UI sorting", async ({ page }) => {
+test.only("Find lowest and highest product without UI sorting", async ({ page }) => {
   await page.goto("https://bstackdemo.com/");
 
   const productNames = await page
