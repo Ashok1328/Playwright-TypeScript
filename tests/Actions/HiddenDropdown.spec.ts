@@ -38,7 +38,7 @@ test("Bootstrap Hidden Dropdown", async ({ page }) => {
     console.log(await options.nth(i).innerText());
   }
 
-  // ---- select/click on option
+  // ---- select/click on option --------
 
   for (let i = 0; i < count; i++) {
     const text = await options.nth(i).innerText();
