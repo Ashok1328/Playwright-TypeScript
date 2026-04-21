@@ -7,6 +7,13 @@ test("Auto-Suggest Dropdown", async ({ page }) => {
 
   await page.waitForTimeout(5000);
 
+  // wait for the suggestions dropdown to appear
+
+  await page
+    .locator("ul li")
+    .first()
+    .waitFor({ state: "visible", timeout: 10000 });
+
   // get all the suggested options --> Ctrl + Shift + P on DOM --> emulate focused page
 
   const options: Locator = page.locator("ul>li");
@@ -30,7 +37,7 @@ test("Auto-Suggest Dropdown", async ({ page }) => {
   for (let i = 0; i < count; i++) {
     const text = await options.nth(i).innerText();
     if (text === "smartphone") {
-      options.nth(i).click();
+      await options.nth(i).click();
       break;
     }
   }

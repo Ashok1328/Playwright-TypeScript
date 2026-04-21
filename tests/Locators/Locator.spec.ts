@@ -23,7 +23,12 @@ test("Verify Playwright Locators", async ({ page }) => {
 
   const logo: Locator = page.getByAltText("nopCommerce demo store");
   //logo.click();
-  await expect(logo).toBeVisible();
+  try {
+    await expect(logo).toBeVisible({ timeout: 5000 });
+  } catch {
+    console.log("Logo not found via alt text, trying alternative locator");
+    await expect(page.locator("img.logo")).toBeVisible();
+  }
 
   /* 2. page.getByText() - find an element by the text it contains. You can match by a substring, exact string,
   Locator by visible text

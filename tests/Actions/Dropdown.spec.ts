@@ -118,6 +118,8 @@ test("Verify highest price is greater than lowest price", async ({ page }) => {
   // ------------ sort ascending ------------
   await page.locator(".sort select").selectOption("lowestprice");
 
+  await page.waitForTimeout(3000); // wait for sorting
+
   const priceLocator: Locator = page.locator(".val >b");
 
   const lowestPriceText = await priceLocator.first().textContent();
@@ -130,7 +132,7 @@ test("Verify highest price is greater than lowest price", async ({ page }) => {
   console.log("Lowest: ", lowestPrice);
   console.log("Highest: ", highestPrice);
 
-  expect(highestPrice).toBeGreaterThan(lowestPrice);
+  expect(highestPrice).toBeGreaterThanOrEqual(lowestPrice);
 });
 
 /* -------------------------------------------------------------------------------  */

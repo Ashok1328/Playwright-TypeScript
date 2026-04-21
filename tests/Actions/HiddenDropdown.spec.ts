@@ -16,15 +16,23 @@ test("Bootstrap Hidden Dropdown", async ({ page }) => {
   ).toBeEnabled();
   await page.getByRole("button", { name: "Login" }).click();
 
+  // Wait for PIM to be visible
+  await page.getByText("PIM").waitFor({ state: "visible", timeout: 10000 });
+
   // click on the PIM
 
   await page.getByText("PIM").click();
 
   // click on Job Title dropdown
 
+  await page
+    .locator("form i")
+    .nth(2)
+    .waitFor({ state: "visible", timeout: 10000 });
   await page.locator("form i").nth(2).click();
+
   const options: Locator = page.locator("//div[@role='listbox']//span");
-  await page.waitForTimeout(3000);
+  await options.first().waitFor({ state: "visible", timeout: 10000 });
   const count: number = await options.count();
   console.log("Number of option in dropdown: ", count);
 
