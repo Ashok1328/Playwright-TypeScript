@@ -64,9 +64,7 @@ test("Extract and compare process data from a dynamic web table", async ({
 
 /* ---------------------------------------------------------------------- */
 
-test.only("Read data and check checkbox across pagination", async ({
-  page,
-}) => {
+test("Read data and check checkbox across pagination", async ({ page }) => {
   await page.goto("https://testautomationpractice.blogspot.com/");
 
   const pages = page.locator("#pagination li a");
