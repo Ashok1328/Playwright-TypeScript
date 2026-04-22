@@ -48,7 +48,7 @@ test("Filter the rows and chech the row count", async ({ page }) => {
   expect(row2).toBe(25);
 });
 
-test.only("Search for specific data in the table", async ({ page }) => {
+test("Search for specific data in the table", async ({ page }) => {
   await page.goto(
     "https://datatables.net/examples/basic_init/zero_configuration.html",
   );
