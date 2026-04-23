@@ -1,4 +1,4 @@
-import { expect, test } from "@playwright/test";
+import { expect, Locator, test } from "@playwright/test";
 
 test("Flight booking automation", async ({ page }) => {
   await page.goto("https://blazedemo.com/");
@@ -54,4 +54,20 @@ test("Flight booking automation", async ({ page }) => {
     .filter({ hasText: minPrice.toString() })
     .locator("input[type='Submit']")
     .click();
+
+  // ---------------------- Fill up the form ----------------------------
+
+  await page.getByLabel("inputName").fill("Beast Khati");
+  await page.getByLabel("address").fill("Stanford 12th Street Mid Bazzar");
+  await page.getByLabel("city").fill("Hawkins");
+  await page.getByLabel("state").fill("Chummary");
+  await page.getByLabel("zipCode").fill("44600");
+  await page.locator("#cardType").selectOption({ value: "visa" });
+  await page.getByLabel("creditCardNumber").fill("1751542646411646");
+  await page.getByLabel("creditCardMonth").fill("February");
+  await page.getByLabel("creditCardYear").fill("July");
+  await page.getByLabel("nameOnCard").fill("Beast Pasa");
+  await page.getByRole("checkbox", { name: "rememberMe" }).check();
+
+  await page.getByRole("button", { name: "Purchase Flight" }).click();
 });
