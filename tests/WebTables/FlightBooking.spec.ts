@@ -55,19 +55,26 @@ test("Flight booking automation", async ({ page }) => {
     .locator("input[type='Submit']")
     .click();
 
+  await page.waitForTimeout(3000);
+
   // ---------------------- Fill up the form ----------------------------
 
-  await page.getByLabel("inputName").fill("Beast Khati");
-  await page.getByLabel("address").fill("Stanford 12th Street Mid Bazzar");
-  await page.getByLabel("city").fill("Hawkins");
-  await page.getByLabel("state").fill("Chummary");
-  await page.getByLabel("zipCode").fill("44600");
+  await page.locator("#inputName").fill("Beast Khati");
+  await page.locator("#address").fill("Stanford 12th Street Mid Bazzar");
+  await page.locator("#city").fill("Hawkins");
+  await page.locator("#state").fill("Chummary");
+  await page.locator("#zipCode").fill("44600");
   await page.locator("#cardType").selectOption({ value: "visa" });
-  await page.getByLabel("creditCardNumber").fill("1751542646411646");
-  await page.getByLabel("creditCardMonth").fill("February");
-  await page.getByLabel("creditCardYear").fill("July");
-  await page.getByLabel("nameOnCard").fill("Beast Pasa");
-  await page.getByRole("checkbox", { name: "rememberMe" }).check();
+  await page.locator("#creditCardNumber").fill("1751542646411646");
+  await page.locator("#creditCardMonth").fill("February");
+  await page.locator("#creditCardYear").fill("July");
+  await page.locator("#nameOnCard").fill("Beast Pasa");
+  await page.locator("#rememberMe").check();
+  await page.locator("//input[@type='submit']").click();
 
-  await page.getByRole("button", { name: "Purchase Flight" }).click();
+  await expect(
+    page.locator(
+      "//h1[normalize-space()='Thank you for your purchase today!']",
+    ),
+  ).toBeVisible();
 });
