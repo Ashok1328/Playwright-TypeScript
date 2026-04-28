@@ -1,8 +1,7 @@
 import { expect, test } from "@playwright/test";
 
-test("Booking.com Date Picker Test - Check-in and Check-out", async ({
-  page,
-}) => {
+test("Booking.com Date Picker Test - Check-in and Check-out", async ({page}) => {
+  
   await page.goto("http://www.booking.com/");
 
   //---- Click on the date picker field to open calender -----------------
