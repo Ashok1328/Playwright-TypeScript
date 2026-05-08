@@ -12,6 +12,8 @@ async function selectDate(
       .locator(".ui-datepicker-month")
       .textContent();
     const currentYear = await page.locator(".ui-datepicker-year").textContent();
+    console.log("Years: ", currentYear)
+    console.log("Months: ", currentMonth)
 
     if (currentMonth === targetMonth && currentYear === targetYear) {
       break;
