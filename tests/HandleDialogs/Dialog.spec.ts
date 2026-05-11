@@ -5,7 +5,6 @@
 // dialog.accept() or dialog.dissmiss() it.
 
 import { expect, test } from "@playwright/test";
-import { compose } from "node:stream";
 
 test("Simple Dialog", async ({ page }) => {
   await page.goto("https://testautomationpractice.blogspot.com/");
@@ -53,7 +52,7 @@ test("Confirmation Dialog", async ({ page }) => {
 
 /* ----------------------------------------------------------------------------------------------*/
 
-test.only("Prompt Dialog", async ({ page }) => {
+test("Prompt Dialog", async ({ page }) => {
   await page.goto("https://testautomationpractice.blogspot.com/");
 
   // Register a dialog handler
