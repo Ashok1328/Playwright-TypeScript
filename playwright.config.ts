@@ -23,7 +23,7 @@ export default defineConfig({
   // viewport : {width: 1280, height: 720 }
 
   /* Run tests in files in parallel */
-  fullyParallel: true,
+  fullyParallel: false, // true - means runs the test randomly & false - means runs the test one after another
   /* Fail the build on CI if you accidentally left test.only in the source code. */
   forbidOnly: !!process.env.CI,
   /* Retry on CI only */
